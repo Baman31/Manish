@@ -54,7 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {githubUrl && (
               <a 
                 href={githubUrl} 
-                target="_blank" 
+                target="https://github.com/MrMKsharma" 
                 rel="noopener noreferrer"
                 className="text-foreground/70 hover:text-foreground transition-colors"
                 aria-label={`View ${title} source code on GitHub`}

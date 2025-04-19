@@ -10,9 +10,9 @@ const About: React.FC = () => {
     { name: 'JavaScript / TypeScript', proficiency: 90 },
     { name: 'React / Vue', proficiency: 85 },
     { name: 'HTML / CSS', proficiency: 95 },
-    { name: 'UI/UX Design', proficiency: 80 },
+    { name: 'Cyber Security', proficiency: 80 },
     { name: 'Node.js', proficiency: 75 },
-    { name: 'Figma / Adobe XD', proficiency: 85 }
+    { name: 'DevOps', proficiency: 85 }
   ];
 
   // Intersection Observer for scroll animations
@@ -60,8 +60,8 @@ const About: React.FC = () => {
           <div className="lg:w-2/3">
             <h2 className="text-3xl md:text-4xl font-bold mb-2 fade-in">About Me</h2>
             <p className="text-foreground/70 mb-6 fade-in">
-              I'm a passionate frontend developer and designer with over 5 years of experience creating 
-              beautiful, functional websites and applications.
+              I'm a passionate Cloud Engineer and Full Stack Developer with working experience creating 
+              beautiful, functional websites and applications and Cloud Based Solutions.
             </p>
             
             <div className="mb-8 fade-in">
@@ -73,8 +73,7 @@ const About: React.FC = () => {
               </p>
               <p>
                 I believe in clean code, thoughtful design, and continuous learning. When I'm not 
-                coding, you can find me exploring new design trends, contributing to open source, 
-                or hiking with my dog.
+                coding, you can find me exploring new design trends, contributing to open source.
               </p>
             </div>
             
@@ -96,9 +95,13 @@ const About: React.FC = () => {
             
             {/* Resume Button */}
             <div className="fade-in">
-              <Button className="group">
+              <Button 
+                className="group" 
+                onClick={() => window.open('/ManishSharma_Resume.pdf', '_blank')}
+                aria-label="Get Resume"
+              >
                 <Download className="mr-2 group-hover:-translate-y-1 transition-transform" size={16} />
-                Download Resume
+                Get Resume
               </Button>
             </div>
           </div>

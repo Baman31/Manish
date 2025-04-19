@@ -6,7 +6,7 @@ import { ArrowDown } from 'lucide-react';
 const Hero: React.FC = () => {
   // Simple typing effect for the role text
   useEffect(() => {
-    const roles = ['Frontend Developer', 'UI/UX Designer', 'Creative Coder'];
+    const roles = ['Full Stack Developer', 'Cloud Engineer', 'Ethical Hacker'];
     const roleElement = document.getElementById('role-text');
     let currentRoleIndex = 0;
     let currentCharIndex = 0;
