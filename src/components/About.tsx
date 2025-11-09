@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import { Download, Cloud, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { 
-  SiJavascript, 
+  SiPython, 
   SiTypescript, 
-  SiReact, 
-  SiVuedotjs, 
-  SiHtml5, 
-  SiCss3, 
-  SiNodedotjs, 
+  SiGo, 
+  SiMongodb, 
+  SiGithub, 
+  SiGrafana, 
+  SiMysql, 
   SiDocker, 
   SiKubernetes,
   SiJenkins,
@@ -19,13 +19,13 @@ import {
 const About: React.FC = () => {
   // Skills data with logos
   const skills = [
-    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    { name: "Python", icon: SiPython, color: "#3776AB" },
     { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "React", icon: SiReact, color: "#61DAFB" },
-    { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
-    { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
-    { name: "CSS3", icon: SiCss3, color: "#1572B6" },
-    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "Golang", icon: SiGo, color: "#00ADD8" },
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+    { name: "GitHub", icon: SiGithub, color: "#181717" },
+    { name: "Grafana", icon: SiGrafana, color: "#F46800" },
+    { name: "MySQL", icon: SiMysql, color: "#4479A1" },
     { name: "Docker", icon: SiDocker, color: "#2496ED" },
     { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
     { name: "AWS", icon: Cloud, color: "#FF9900" },
