@@ -23,7 +23,7 @@ const About: React.FC = () => {
     { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
     { name: "Golang", icon: SiGo, color: "#00ADD8" },
     { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-    { name: "GitHub", icon: SiGithub, color: "#181717" },
+    { name: "GitHub", icon: SiGithub, color: "#6e40c9" },
     { name: "Grafana", icon: SiGrafana, color: "#F46800" },
     { name: "MySQL", icon: SiMysql, color: "#4479A1" },
     { name: "Docker", icon: SiDocker, color: "#2496ED" },
