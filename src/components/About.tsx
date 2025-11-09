@@ -1,17 +1,39 @@
 import React, { useEffect } from "react";
-import { Download } from "lucide-react";
+import { Download, Cloud, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { 
+  SiJavascript, 
+  SiTypescript, 
+  SiReact, 
+  SiVuedotjs, 
+  SiHtml5, 
+  SiCss3, 
+  SiNodedotjs, 
+  SiDocker, 
+  SiKubernetes,
+  SiJenkins,
+  SiGithubactions,
+  SiTerraform
+} from "react-icons/si";
 
 const About: React.FC = () => {
-  // Skills data
+  // Skills data with logos
   const skills = [
-    { name: "JavaScript / TypeScript", proficiency: 90 },
-    { name: "React / Vue", proficiency: 85 },
-    { name: "HTML / CSS", proficiency: 95 },
-    { name: "Cyber Security", proficiency: 80 },
-    { name: "Node.js", proficiency: 75 },
-    { name: "DevOps", proficiency: 85 },
+    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+    { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+    { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+    { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+    { name: "AWS", icon: Cloud, color: "#FF9900" },
+    { name: "Azure", icon: Cloud, color: "#0078D4" },
+    { name: "Jenkins", icon: SiJenkins, color: "#D24939" },
+    { name: "GitHub Actions", icon: SiGithubactions, color: "#2088FF" },
+    { name: "Terraform", icon: SiTerraform, color: "#7B42BC" },
+    { name: "Cyber Security", icon: Shield, color: "#FF6B6B" },
   ];
 
   // Intersection Observer for scroll animations
@@ -86,20 +108,24 @@ const About: React.FC = () => {
               <h3 className="text-xl font-semibold mb-4 fade-in">
                 Technical Skills
               </h3>
-              <div className="space-y-4">
-                {skills.map((skill, index) => (
-                  <div
-                    key={skill.name}
-                    className="fade-in"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="flex justify-between mb-1">
-                      <span>{skill.name}</span>
-                      <span>{skill.proficiency}%</span>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {skills.map((skill, index) => {
+                  const Icon = skill.icon;
+                  return (
+                    <div
+                      key={skill.name}
+                      className="fade-in flex flex-col items-center gap-2 p-4 rounded-md hover-elevate active-elevate-2 transition-all"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                      data-testid={`skill-${skill.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    >
+                      <Icon 
+                        className="w-8 h-8" 
+                        style={{ color: skill.color }}
+                      />
+                      <span className="text-sm text-center font-medium">{skill.name}</span>
                     </div>
-                    <Progress value={skill.proficiency} className="h-2" />
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
