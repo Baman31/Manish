@@ -1,13 +1,12 @@
-
-import React, { useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowDown } from 'lucide-react';
+import React, { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
 
 const Hero: React.FC = () => {
   // Simple typing effect for the role text
   useEffect(() => {
-    const roles = ['Full Stack Developer', 'Cloud Engineer', 'Ethical Hacker'];
-    const roleElement = document.getElementById('role-text');
+    const roles = ["Full Stack Developer", "Cloud Engineer", "DevOps Expert"];
+    const roleElement = document.getElementById("role-text");
     let currentRoleIndex = 0;
     let currentCharIndex = 0;
     let isDeleting = false;
@@ -16,7 +15,7 @@ const Hero: React.FC = () => {
 
     const type = () => {
       const currentRole = roles[currentRoleIndex];
-      
+
       if (isDeleting) {
         currentCharIndex--;
         typingSpeed = 50;
@@ -45,31 +44,55 @@ const Hero: React.FC = () => {
   }, []);
 
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById('projects');
-    projectsSection?.scrollIntoView({ behavior: 'smooth' });
+    const projectsSection = document.getElementById("projects");
+    projectsSection?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center pt-20">
+    <section
+      id="hero"
+      className="min-h-screen flex flex-col justify-center pt-20"
+    >
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center">
         {/* Text Content */}
         <div className="lg:w-1/2 mb-10 lg:mb-0">
-          <span className="text-accent font-medium mb-2 block animate-fade-in">Hello, I'm</span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <span className="text-accent font-medium mb-2 block animate-fade-in">
+            Hello, I'm
+          </span>
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in"
+            style={{ animationDelay: "200ms" }}
+          >
             Manish Sharma
           </h1>
-          <div className="h-8 mb-6 animate-fade-in" style={{ animationDelay: '400ms' }}>
-            <span id="role-text" className="text-foreground/70 text-xl md:text-2xl"></span>
+          <div
+            className="h-8 mb-6 animate-fade-in"
+            style={{ animationDelay: "400ms" }}
+          >
+            <span
+              id="role-text"
+              className="text-foreground/70 text-xl md:text-2xl"
+            ></span>
             <span className="inline-block w-0.5 h-5 bg-accent ml-1 animate-pulse-light"></span>
           </div>
-          <p className="text-foreground/80 mb-8 max-w-md leading-relaxed animate-fade-in" style={{ animationDelay: '600ms' }}>
-            I create engaging digital experiences with clean code and thoughtful design.
-            Passionate about crafting interfaces that are both beautiful and functional.
+          <p
+            className="text-foreground/80 mb-8 max-w-md leading-relaxed animate-fade-in"
+            style={{ animationDelay: "600ms" }}
+          >
+            I create engaging digital experiences with clean code and thoughtful
+            design. Passionate about crafting interfaces that are both beautiful
+            and functional.
           </p>
-          <div className="flex space-x-4 animate-fade-in" style={{ animationDelay: '800ms' }}>
+          <div
+            className="flex space-x-4 animate-fade-in"
+            style={{ animationDelay: "800ms" }}
+          >
             <Button onClick={scrollToProjects} className="group">
               View My Work
-              <ArrowDown className="ml-2 group-hover:translate-y-1 transition-transform" size={16} />
+              <ArrowDown
+                className="ml-2 group-hover:translate-y-1 transition-transform"
+                size={16}
+              />
             </Button>
             <Button variant="outline" asChild>
               <a href="#contact">Contact Me</a>
@@ -78,7 +101,10 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Hero Image or Illustration */}
-        <div className="lg:w-1/2 flex justify-center animate-fade-in" style={{ animationDelay: '1000ms' }}>
+        <div
+          className="lg:w-1/2 flex justify-center animate-fade-in"
+          style={{ animationDelay: "1000ms" }}
+        >
           <div className="relative">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-primary/10 backdrop-blur-sm flex items-center justify-center">
               <div className="w-60 h-60 md:w-76 md:h-76 rounded-full overflow-hidden border-4 border-background">
