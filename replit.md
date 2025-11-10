@@ -40,48 +40,44 @@ Preferred communication style: Simple, everyday language.
 ### Backend Architecture
 
 **Technology Stack:**
-- **Database ORM**: Drizzle ORM for type-safe database queries
-- **Database Driver**: Neon serverless PostgreSQL client with WebSocket support
-- **Schema Location**: Shared schema definition in `shared/schema.ts` for type consistency
+- **Runtime**: Node.js with Express.js server
+- **Database**: MongoDB Atlas (cloud-hosted NoSQL database)
+- **ODM**: Mongoose for schema modeling and data validation
+- **API Server**: Express.js REST API on port 3000
+- **Concurrency**: Frontend (Vite) and Backend (Express) run simultaneously via concurrently
 
 **Database Schema:**
-The application uses four main tables:
+The application uses MongoDB collections with Mongoose schemas:
 
 1. **messages**: Stores contact form submissions
-   - Fields: id, name, email, subject, message, read status, timestamp
+   - Fields: name (required), email (required), subject (optional), message (required), read (boolean, default: false), createdAt/updatedAt (auto-managed)
    - Purpose: Enables visitors to send messages to the portfolio owner
+   - Location: `server/models/Message.ts`
 
-2. **profiles**: User profile information
-   - Fields: id, email, full name, avatar URL, admin flag, timestamps
-   - Purpose: Manages user profiles with admin role support
-
-3. **projects**: Portfolio project showcase
-   - Fields: id, title, description, long description, image URL, GitHub URL, live URL, technologies array, featured flag, timestamps
-   - Purpose: Dynamic project management with categorization and external links
-
-4. **skills**: Technical skills and proficiencies
-   - Fields: id, name, category, icon name, proficiency level, timestamps
-   - Purpose: Organizes and displays technical competencies
+**API Endpoints:**
+- `POST /api/contact`: Accepts contact form submissions, validates input, and saves to MongoDB
+- `GET /api/health`: Health check endpoint to verify server status
 
 **Design Decisions:**
-- **Serverless-ready**: Uses Neon serverless driver for WebSocket connections, enabling deployment on serverless platforms
-- **Type safety**: Drizzle ORM provides full TypeScript support from schema to queries
-- **UUID primary keys**: Uses UUID for all table primary keys for better distribution and security
-- **Soft timestamps**: All tables include created_at and updated_at fields for audit trails
-- **Boolean flags**: Features like `featured` (projects) and `isAdmin` (profiles) enable flexible content management
+- **MongoDB chosen for flexibility**: NoSQL structure allows easy schema evolution without migrations
+- **Mongoose ODM**: Provides schema validation, type casting, and query building
+- **Express REST API**: Simple, lightweight API server for handling contact form submissions
+- **CORS enabled**: Frontend can communicate with backend API during development
+- **Environment-based config**: MongoDB connection string stored securely in MONGODB_URI environment variable
 
 ### Data Storage
 
 **Database Solution:**
-- **Type**: PostgreSQL (serverless via Neon)
-- **Connection**: Connection pooling via Neon's serverless Pool
-- **ORM**: Drizzle ORM configured in `server/db.ts`
-- **Migrations**: Drizzle Kit for schema migrations stored in `drizzle/` directory
+- **Type**: MongoDB Atlas (cloud NoSQL database)
+- **Connection**: Mongoose connection with automatic reconnection handling
+- **Schema Definition**: Mongoose schemas in `server/models/` directory
+- **Connection Setup**: `server/db.ts` handles MongoDB connection with error handling
 
 **Rationale:**
-- PostgreSQL chosen for relational data integrity and advanced features (arrays, timestamps)
-- Neon serverless enables cost-effective hosting with automatic scaling
-- Drizzle ORM provides type safety without runtime overhead
+- MongoDB Atlas provides free tier hosting with automatic scaling
+- NoSQL structure perfect for simple contact form data without complex relationships
+- Mongoose provides schema validation and type safety similar to TypeScript
+- Easy to deploy and maintain with minimal configuration
 
 ### External Dependencies
 
@@ -95,12 +91,13 @@ The application uses four main tables:
 - **ESLint**: Code quality with React-specific rules
 - **TypeScript**: Type checking with relaxed strictness for development speed
 - **Vite**: Fast HMR and optimized builds with SWC compiler
-- **Drizzle Kit**: Database schema management and migration tools
+- **tsx**: TypeScript execution for running the Express server
+- **concurrently**: Runs frontend and backend servers simultaneously
 
 **External Services:**
 - **Fonts**: Google Fonts (Manrope and Inter families)
 - **GPTEngineer**: Analytics/tracking script loaded from CDN
-- **Database**: Neon serverless PostgreSQL (requires DATABASE_URL environment variable)
+- **Database**: MongoDB Atlas (requires MONGODB_URI environment variable)
 
 **API Dependencies:**
 - **Date handling**: date-fns for date formatting and manipulation
@@ -109,7 +106,17 @@ The application uses four main tables:
 - **Theme management**: next-themes for theme persistence and system preference detection
 
 **Deployment Considerations:**
-- Requires `DATABASE_URL` environment variable for database connection
+- Requires `MONGODB_URI` environment variable for database connection
+- **Important**: MongoDB Atlas requires IP whitelisting - add Replit's IP address or `0.0.0.0/0` (for testing) to Atlas Network Access whitelist
 - Supports both development and production builds via separate Vite configurations
 - Robot.txt configured for search engine crawling
 - Custom 404 handling with error logging
+
+## Recent Changes (November 2025)
+
+### Database Migration: PostgreSQL → MongoDB
+- **Removed**: Neon PostgreSQL, Drizzle ORM, and all related packages
+- **Added**: MongoDB Atlas with Mongoose ODM
+- **New Backend**: Express.js API server running on port 3000
+- **Contact Form**: Now submits real data to `/api/contact` endpoint and saves to MongoDB
+- **Environment Variables**: Changed from `DATABASE_URL` to `MONGODB_URI`
