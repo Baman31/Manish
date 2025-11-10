@@ -34,31 +34,6 @@ const Projects: React.FC = () => {
       demoUrl: '#',
       githubUrl: '#',
       category: 'ui'
-    },
-    {
-      title: 'Portfolio Website',
-      description: 'Personal portfolio website with a clean, modern design and smooth animations.',
-      imageSrc: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?q=80&w=2670&auto=format&fit=crop',
-      tags: ['React', 'Tailwind CSS', 'Framer Motion'],
-      demoUrl: '#',
-      githubUrl: '#',
-      category: 'web'
-    },
-    {
-      title: 'Music Player Interface',
-      description: 'Sleek music player design with visualizations, playlist management, and social sharing features.',
-      imageSrc: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2670&auto=format&fit=crop',
-      tags: ['Figma', 'Prototyping', 'UX Design'],
-      category: 'ui'
-    },
-    {
-      title: 'Task Management Tool',
-      description: 'Collaborative project management application with drag-and-drop interface and real-time updates.',
-      imageSrc: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=2672&auto=format&fit=crop',
-      tags: ['Vue.js', 'Vuex', 'Firebase', 'Tailwind CSS'],
-      demoUrl: '#',
-      githubUrl: '#',
-      category: 'web'
     }
   ];
 
