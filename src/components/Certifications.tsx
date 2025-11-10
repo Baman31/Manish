@@ -42,7 +42,8 @@ const Certifications: React.FC = () => {
       title: 'Microsoft Learn Student Ambassador',
       description: 'Selected as Microsoft Learn Student Ambassador, mentoring students in cloud technologies',
       icon: Trophy,
-      color: 'text-blue-500'
+      color: 'text-blue-500',
+      link: 'https://mvp.microsoft.com/en-US/studentambassadors/profile/a245527c-083e-4892-ae81-ae50b8ed2a94'
     },
     {
       title: 'Hackathon Winner',
@@ -128,21 +129,30 @@ const Certifications: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
+              const CardWrapper = achievement.link ? 'a' : 'div';
+              const cardProps = achievement.link 
+                ? { href: achievement.link, target: '_blank', rel: 'noopener noreferrer', className: 'block' }
+                : {};
+              
               return (
-                <Card
-                  key={achievement.title}
-                  className="fade-in hover-elevate transition-all"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  data-testid={`achievement-${achievement.title.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <CardHeader>
-                    <Icon className={`w-8 h-8 mb-2 ${achievement.color}`} />
-                    <CardTitle className="text-lg">{achievement.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-foreground/70">{achievement.description}</p>
-                  </CardContent>
-                </Card>
+                <CardWrapper key={achievement.title} {...cardProps}>
+                  <Card
+                    className={`fade-in hover-elevate transition-all h-full ${achievement.link ? 'cursor-pointer hover:shadow-lg' : ''}`}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    data-testid={`achievement-${achievement.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    <CardHeader>
+                      <Icon className={`w-8 h-8 mb-2 ${achievement.color}`} />
+                      <CardTitle className="text-lg">{achievement.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-foreground/70">{achievement.description}</p>
+                      {achievement.link && (
+                        <p className="text-sm text-blue-500 mt-2 hover:underline">View Profile →</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </CardWrapper>
               );
             })}
           </div>
