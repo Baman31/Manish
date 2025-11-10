@@ -18,6 +18,7 @@ const Certifications: React.FC = () => {
       date: "2025",
       icon: Award,
       color: "text-orange-500",
+      link: "https://www.credly.com/badges/c08c2cac-1a7c-49b2-a5d5-64caade636de/public_url",
     },
     {
       title: "AWS Academy Graduate- AWS Academy Cloud Foundations",
@@ -25,6 +26,7 @@ const Certifications: React.FC = () => {
       date: "2025",
       icon: Award,
       color: "text-blue-500",
+      link: "https://www.credly.com/badges/575a16ef-3da9-4b9f-8375-44fbda9dba6d/public_url",
     },
     {
       title: "Microsoft Certified: Azure AI Engineer Associate (AI- 102)",
@@ -32,6 +34,7 @@ const Certifications: React.FC = () => {
       date: "2025",
       icon: Award,
       color: "text-blue-600",
+      link: "https://learn.microsoft.com/en-us/users/manishsharma-2929/credentials/27e6c9552a97f8d7",
     },
     {
       title: "GitHub Foundations",
@@ -39,6 +42,7 @@ const Certifications: React.FC = () => {
       date: "2025",
       icon: Award,
       color: "text-purple-600",
+      link: "https://www.credly.com/earner/earned/badge/db66e03c-41f2-4148-a361-b3e804fe808b",
     },
   ];
 
@@ -111,26 +115,42 @@ const Certifications: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {certifications.map((cert, index) => {
               const Icon = cert.icon;
+              const CardWrapper = cert.link ? "a" : "div";
+              const cardProps = cert.link
+                ? {
+                    href: cert.link,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "block",
+                  }
+                : {};
+
               return (
-                <Card
-                  key={cert.title}
-                  className="fade-in hover-elevate transition-all"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  data-testid={`cert-${cert.title.toLowerCase().replace(/\s+/g, "-")}`}
-                >
-                  <CardHeader>
-                    <div className="flex items-start justify-between gap-2">
-                      <Icon className={`w-8 h-8 ${cert.color}`} />
-                      <Badge variant="secondary" className="text-xs">
-                        {cert.date}
-                      </Badge>
-                    </div>
-                    <CardTitle className="text-lg mt-3">{cert.title}</CardTitle>
-                    <CardDescription className="text-sm">
-                      {cert.issuer}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                <CardWrapper key={cert.title} {...cardProps}>
+                  <Card
+                    className={`fade-in hover-elevate transition-all h-full ${cert.link ? "cursor-pointer hover:shadow-lg" : ""}`}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    data-testid={`cert-${cert.title.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    <CardHeader>
+                      <div className="flex items-start justify-between gap-2">
+                        <Icon className={`w-8 h-8 ${cert.color}`} />
+                        <Badge variant="secondary" className="text-xs">
+                          {cert.date}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-lg mt-3">{cert.title}</CardTitle>
+                      <CardDescription className="text-sm">
+                        {cert.issuer}
+                      </CardDescription>
+                      {cert.link && (
+                        <p className="text-sm text-blue-500 mt-2 hover:underline">
+                          View Credential →
+                        </p>
+                      )}
+                    </CardHeader>
+                  </Card>
+                </CardWrapper>
               );
             })}
           </div>
