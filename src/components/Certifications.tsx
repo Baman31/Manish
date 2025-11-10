@@ -8,22 +8,22 @@ const Certifications: React.FC = () => {
   const certifications = [
     {
       title: 'AWS Certified Solutions Architect',
-      issuer: 'Amazon Web Services',
+      issuer: 'AWS Academy Graduate- AWS Academy Cloud Foundations',
       date: '2023',
       icon: Award,
       color: 'text-orange-500'
     },
     {
-      title: 'Certified Kubernetes Administrator',
+      title: 'AWS Academy Graduate- AWS Academy Cloud Foundations',
       issuer: 'Cloud Native Computing Foundation',
       date: '2023',
       icon: Award,
       color: 'text-blue-500'
     },
     {
-      title: 'Azure DevOps Engineer Expert',
+      title: 'Microsoft Certified: Azure AI Engineer Associate (AI- 102)',
       issuer: 'Microsoft',
-      date: '2022',
+      date: '2025',
       icon: Award,
       color: 'text-blue-600'
     },
