@@ -27,6 +27,15 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
+    if (!process.env.MONGODB_URI) {
+      console.log('Message received (not saved - no database):', { name, email, subject, message });
+      return res.status(201).json({
+        success: true,
+        message: 'Message received successfully',
+        data: { name, email, subject, message },
+      });
+    }
+
     const newMessage = new Message({
       name,
       email,
